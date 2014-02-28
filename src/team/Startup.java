@@ -10,6 +10,9 @@ package team;
  *
  * @author Andreas Fisker
  */
-public class Team {
+public class Startup {
     
+    public static void main(String[] args) {
+        
+    }
 }
