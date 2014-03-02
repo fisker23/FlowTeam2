@@ -22,6 +22,18 @@ public class Person {
         this.finisher = finisher;
     }
     // Skal vi have en "fromString" constructor der kan lave en string fra en .txt fil om til en personklasse?
+    // Har lavet den idag, søndag, men har ikke testet den
+    public Person(String fromTextFile){
+        int sepName = fromTextFile.indexOf(",");
+        int sepAdmin = fromTextFile.indexOf(",", sepName);
+        int sepAnalyst = fromTextFile.indexOf(",",sepAdmin);
+        int sepCreative = fromTextFile.indexOf(",", sepAnalyst);
+        this.name = fromTextFile.substring(0, sepName);
+        this.administrator = Integer.parseInt(fromTextFile.substring((sepName + 2), sepAdmin));
+        this.analyst = Integer.parseInt(fromTextFile.substring((sepAdmin + 2), sepAnalyst));
+        this.creative = Integer.parseInt(fromTextFile.substring((sepAnalyst + 2),sepCreative));
+        this.finisher = Integer.parseInt(fromTextFile.substring((sepCreative + 2)));
+    }
     
     @Override
     public String toString(){
