@@ -24,6 +24,7 @@ public class Person {
     // Skal vi have en "fromString" constructor der kan lave en string fra en .txt fil om til en personklasse?
     // Har lavet den idag, søndag, men har ikke testet den
     public Person(String fromTextFile){
+        //  finder komma seperatorene i String inputtet og bruger dem til at lave object af personen
         int sepName = fromTextFile.indexOf(",");
         int sepAdmin = fromTextFile.indexOf(",", sepName);
         int sepAnalyst = fromTextFile.indexOf(",",sepAdmin);

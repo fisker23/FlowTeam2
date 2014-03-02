@@ -20,12 +20,14 @@ public class Team {
     public Team(){}
     
     public Team(String name, String description){
+        //  Sådan som vores lo-fi virker lige skal man kun bruge team-navn og beskrivelse når man opretter teamet, personer bliver smidt ind senere
         this.name = name;
         this.description = description;
     }
     
     @Override
     public String toString(){
+        //  Printer de personer der findes i arrayet, måske skal navn også printes med?
         String str = "";
         for (int i = 0; i<team.size();i++){
             str = str + team.get(i) + "\n";
