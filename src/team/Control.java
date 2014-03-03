@@ -8,8 +8,13 @@ package team;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,12 +25,15 @@ public class Control {
     private ArrayList<Team> teamList;
     private ArrayList<Person> personList;
     private Scanner scanFile;
+    PrintWriter pwTeam;
+    PrintWriter pwPersons;
     
     public Control(){
         teamList = new ArrayList();
         personList = new ArrayList();
         Team teamFromFile = new Team();
         
+        //Loads persons from the names.txt file
         try{
             scanFile = new Scanner(new File("names.txt"));
         }
@@ -41,10 +49,36 @@ public class Control {
             Person p = new Person(str);
             personList.add(p);
         }
+        try{
+            scanFile = new Scanner(new File("teams.txt"));
+        }
+        catch(FileNotFoundException e){
+            System.out.println("FNF Error: " + e);
+        }
+        catch(Exception e){
+            System.out.println("Error: " + e);
+        }
+        while(scanFile.hasNext()){
+            String str = scanFile.nextLine();
+            Team t = new Team(str);
+            teamList.add(t);
+        }
+        
     }
     public void createTeam(String name){
         Team team = new Team(name, "");
         teamList.add(team);
+        try{
+            pwTeam = new PrintWriter("teams.txt");
+        }
+        catch(FileNotFoundException ex){
+            System.out.println("Error opening file");
+        }
+        for(int i=0; i<teamList.size();i++){
+            pwTeam.println(teamList.get(i).toFile());
+        }
+        
+        pwTeam.close();
     }
     public void addPerson(Person p){
         personList.add(p);

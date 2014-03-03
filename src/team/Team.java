@@ -24,6 +24,39 @@ public class Team {
         this.name = name;
         this.description = description;
     }
+    public Team(String fromFile){
+        /*
+        int sepName = fromTextFile.indexOf(",");
+        int sepAdmin = fromTextFile.indexOf(",", (sepName+1));
+        int sepAnalyst = fromTextFile.indexOf(",",(sepAdmin+1));
+        int sepCreative = fromTextFile.indexOf(",", (sepAnalyst+1));
+        this.name = fromTextFile.substring(0, sepName);
+        this.administrator = Integer.parseInt(fromTextFile.substring((sepName+1), sepAdmin));
+        this.analyst = Integer.parseInt(fromTextFile.substring((sepAdmin+1), sepAnalyst));
+        this.creative = Integer.parseInt(fromTextFile.substring((sepAnalyst+1),sepCreative));
+        this.finisher = Integer.parseInt(fromTextFile.substring((sepCreative+1)));
+        */
+        
+        int sepSemicolonOne = fromFile.indexOf(";");
+        System.out.println(sepSemicolonOne);
+        int sepSemicolonTwo;
+        name = fromFile.substring(0,sepSemicolonOne);
+        System.out.println(name);
+        int counter = 0;
+        for( int i=0; i<fromFile.length(); i++ ) {
+            if( fromFile.charAt(i) == '$' ) {
+                counter++;
+            } 
+        }
+        for (int i=0;i<(counter-1);i++){
+            sepSemicolonTwo = fromFile.indexOf(";", (sepSemicolonOne+1));
+            System.out.println(sepSemicolonTwo);
+            Person p = new Person(fromFile.substring((sepSemicolonOne+1), sepSemicolonTwo));
+            System.out.println(p);
+            team.add(p);
+            sepSemicolonOne = sepSemicolonTwo;
+        }
+    }
     
     @Override
     public String toString(){
@@ -31,6 +64,13 @@ public class Team {
         String str = name + "\n";
         for (int i = 0; i<team.size();i++){
             str = str + team.get(i) + "\n";
+        }
+        return str;
+    }
+    public String toFile(){
+        String str = name + ";";
+        for (int i = 0; i<team.size();i++){
+            str = str + team.get(i) + ";";
         }
         return str;
     }
