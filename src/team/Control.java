@@ -6,7 +6,10 @@
 
 package team;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -16,10 +19,27 @@ public class Control {
     
     ArrayList<Team> teamList;
     ArrayList<Person> personList;
+    Scanner scanFile;
     
     public Control(){
         teamList = new ArrayList();
         personList = new ArrayList();
+        
+        try{
+            scanFile = new Scanner(new File("names.txt"));
+        }
+        catch(FileNotFoundException e){
+            System.out.println("FNF Error: " + e);
+        }
+        catch(Exception e){
+            System.out.println("Error: " + e);
+        }
+        while(scanFile.hasNext()){
+            String str = scanFile.nextLine();
+            System.out.println(str);
+            Person p = new Person(str);
+            personList.add(p);
+        }
     }
     public void addPerson(Person p){
         personList.add(p);

@@ -30,6 +30,9 @@ public class FlowTeamGUI extends javax.swing.JFrame {
         jListTeams.setModel(teams);
         jListTeamsManageTeams.setModel(teams);
         jListTeamMembers.setModel(members);
+        for(int i =0; i<control.getPersonList().size(); i++){
+            persons.add(i, control.getPerson(i));
+        }
     }
 
     /**
