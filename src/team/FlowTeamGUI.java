@@ -7,6 +7,7 @@
 package team;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -32,6 +33,9 @@ public class FlowTeamGUI extends javax.swing.JFrame {
         jListTeamMembers.setModel(members);
         for(int i =0; i<control.getPersonList().size(); i++){
             persons.add(i, control.getPerson(i));
+        }
+        for(int i =0; i<control.getTeamList().size(); i++){
+            teams.add(i, control.getTeam(i));
         }
     }
 
@@ -245,6 +249,11 @@ public class FlowTeamGUI extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jListTeams);
 
         jButtonShowTeam.setText("Show");
+        jButtonShowTeam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonShowTeamActionPerformed(evt);
+            }
+        });
 
         jLabelShowTeamLabel.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabelShowTeamLabel.setText("Team X");
@@ -322,10 +331,20 @@ public class FlowTeamGUI extends javax.swing.JFrame {
         jScrollPane5.setViewportView(jListPersonsManageTeams);
 
         jButtonCreateTeam.setText("Create Team");
+        jButtonCreateTeam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCreateTeamActionPerformed(evt);
+            }
+        });
 
         jButtonSaveTeam.setText("Save Team");
 
         jButtonDeleteTeam.setText("Delete Team");
+        jButtonDeleteTeam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteTeamActionPerformed(evt);
+            }
+        });
 
         jListTeamMembers.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -504,6 +523,29 @@ public class FlowTeamGUI extends javax.swing.JFrame {
         persons.remove(selected);
         
     }//GEN-LAST:event_jButtonRemovePersonActionPerformed
+
+    private void jButtonShowTeamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonShowTeamActionPerformed
+        // TODO add your handling code here:
+        int selected = jListTeams.getAnchorSelectionIndex();
+        String str = "Members:\n"+control.getTeam(selected);
+    }//GEN-LAST:event_jButtonShowTeamActionPerformed
+
+    private void jButtonCreateTeamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCreateTeamActionPerformed
+        // TODO add your handling code here:
+        String name = JOptionPane.showInputDialog(null, "What is the teams' name?");
+        control.createTeam(name);
+        teams.removeAllElements();
+        for(int i =0; i<control.getTeamList().size(); i++){
+            teams.add(i, control.getTeam(i));
+        }
+    }//GEN-LAST:event_jButtonCreateTeamActionPerformed
+
+    private void jButtonDeleteTeamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteTeamActionPerformed
+        // TODO add your handling code here:
+        int selected = jListTeamsManageTeams.getAnchorSelectionIndex();
+        control.removeTeam(selected);
+        teams.remove(selected);
+    }//GEN-LAST:event_jButtonDeleteTeamActionPerformed
 
     /**
      * @param args the command line arguments

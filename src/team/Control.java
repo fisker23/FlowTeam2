@@ -24,6 +24,7 @@ public class Control {
     public Control(){
         teamList = new ArrayList();
         personList = new ArrayList();
+        Team teamFromFile = new Team();
         
         try{
             scanFile = new Scanner(new File("names.txt"));
@@ -41,14 +42,29 @@ public class Control {
             personList.add(p);
         }
     }
+    public void createTeam(String name){
+        Team team = new Team(name, "");
+        teamList.add(team);
+    }
     public void addPerson(Person p){
         personList.add(p);
     }
     public void removePerson(int selected){
         personList.remove(selected);
     }
+    public void removeTeam(int selected){
+        for(int i=0;i<teamList.get(selected).getTeam().size(); i++){
+            Person p;
+            p = new Person(teamList.get(selected).getTeam().get(i).toString());
+            personList.add(p);
+        }
+        teamList.remove(selected);
+    }
     public Person getPerson(int i){
         return personList.get(i);
+    }
+    public Team getTeam(int i){
+        return teamList.get(i);
     }
     public ArrayList<Team> getTeamList() {
         return teamList;
