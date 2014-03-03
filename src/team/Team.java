@@ -46,6 +46,9 @@ public class Team {
     public String getName() {
         return name;
     }
+    public Person getPerson(int i){
+        return team.get(i);
+    }
 
     public void setName(String name) {
         this.name = name;

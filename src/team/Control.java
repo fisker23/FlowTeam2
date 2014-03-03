@@ -17,9 +17,9 @@ import java.util.Scanner;
  */
 public class Control {
     
-    ArrayList<Team> teamList;
-    ArrayList<Person> personList;
-    Scanner scanFile;
+    private ArrayList<Team> teamList;
+    private ArrayList<Person> personList;
+    private Scanner scanFile;
     
     public Control(){
         teamList = new ArrayList();

@@ -42,6 +42,11 @@ public class Person {
         str = name + ", " + administrator + ", " + analyst + ", " + creative + ", " + finisher;
         return str;
     }
+    public String toNoSpaceString(){
+        String str;
+        str = name + "," + administrator + "," + analyst + "," + creative + "," + finisher;
+        return str;
+    }
 
     public String getName() {
         return name;
