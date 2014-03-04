@@ -38,22 +38,20 @@ public class Team {
         */
         
         int sepSemicolonOne = fromFile.indexOf(";");
-        System.out.println(sepSemicolonOne);
         int sepSemicolonTwo;
         name = fromFile.substring(0,sepSemicolonOne);
         System.out.println(name);
         int counter = 0;
         for( int i=0; i<fromFile.length(); i++ ) {
-            if( fromFile.charAt(i) == '$' ) {
+            if( fromFile.charAt(i) == ';' ) {
                 counter++;
             } 
         }
         for (int i=0;i<(counter-1);i++){
             sepSemicolonTwo = fromFile.indexOf(";", (sepSemicolonOne+1));
-            System.out.println(sepSemicolonTwo);
             Person p = new Person(fromFile.substring((sepSemicolonOne+1), sepSemicolonTwo));
             System.out.println(p);
-            team.add(p);
+            team.add(i, p);
             sepSemicolonOne = sepSemicolonTwo;
         }
     }
@@ -67,9 +65,12 @@ public class Team {
     public String toFile(){
         String str = name + ";";
         for (int i = 0; i<team.size();i++){
-            str = str + team.get(i) + ";";
+            str = str + team.get(i).toNoSpaceString() + ";";
         }
         return str;
+    }
+    public void removeAll(){
+        team.clear();
     }
     
     public void addPerson(Person p1){

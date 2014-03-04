@@ -80,6 +80,31 @@ public class Control {
         
         pwTeam.close();
     }
+    public void saveAll(){
+        try{
+            pwTeam = new PrintWriter("teams.txt");
+        }
+        catch(FileNotFoundException ex){
+            System.out.println("Error opening file");
+        }
+        for(int i=0; i<teamList.size();i++){
+            pwTeam.println(teamList.get(i).toFile());
+        }
+        
+        pwTeam.close();
+        
+        try{
+            pwPersons = new PrintWriter("names.txt");
+        }
+        catch(FileNotFoundException ex){
+            System.out.println("Error opening file");
+        }
+        for(int i=0; i<personList.size();i++){
+            pwPersons.println(personList.get(i).toNoSpaceString());
+        }
+        
+        pwPersons.close();
+    }
     public void addPerson(Person p){
         personList.add(p);
     }

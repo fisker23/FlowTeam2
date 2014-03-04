@@ -604,9 +604,10 @@ public class FlowTeamGUI extends javax.swing.JFrame {
     private void jButtonShowManageTeamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonShowManageTeamsActionPerformed
         // TODO add your handling code here:
         int selected = jListTeamsManageTeams.getAnchorSelectionIndex();
+        members.removeAllElements();
         for(int i=0;i<control.getTeam(selected).getTeam().size();i++){
             Person p = new Person(control.getTeam(selected).getPerson(i).toNoSpaceString());
-            members.addElement(p);
+            members.add(i, p);
         }
         jListTeamMembers.setModel(members);
     }//GEN-LAST:event_jButtonShowManageTeamsActionPerformed
@@ -624,9 +625,12 @@ public class FlowTeamGUI extends javax.swing.JFrame {
     private void jButtonSaveTeamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveTeamActionPerformed
         // TODO add your handling code here:
         int selectedTeam = jListTeamsManageTeams.getAnchorSelectionIndex();
+        control.getTeam(selectedTeam).removeAll();
         for(int i=0;i<members.getSize();i++){
             control.getTeam(selectedTeam).addPerson(members.get(i));
         }
+        control.saveAll();
+        
         System.out.println(control.getTeam(selectedTeam));
     }//GEN-LAST:event_jButtonSaveTeamActionPerformed
 
