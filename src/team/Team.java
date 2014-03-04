@@ -61,11 +61,8 @@ public class Team {
     @Override
     public String toString(){
         //  Printer de personer der findes i arrayet, måske skal navn også printes med?
-        String str = name + "\n";
-        for (int i = 0; i<team.size();i++){
-            str = str + team.get(i) + "\n";
-        }
-        return str;
+        
+        return name;
     }
     public String toFile(){
         String str = name + ";";

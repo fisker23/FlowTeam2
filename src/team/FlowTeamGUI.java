@@ -27,6 +27,8 @@ public class FlowTeamGUI extends javax.swing.JFrame {
         persons = new DefaultListModel();
         teams = new DefaultListModel();
         members = new DefaultListModel();
+        this.setResizable(false);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         jListPersons.setModel(persons);
         jListPersonsManageTeams.setModel(persons);
         jListTeams.setModel(teams);
@@ -660,6 +662,8 @@ public class FlowTeamGUI extends javax.swing.JFrame {
             @Override
             public void run() {
                 new FlowTeamGUI().setVisible(true);
+                
+                
             }
         });
     }
