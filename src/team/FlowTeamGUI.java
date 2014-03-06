@@ -615,9 +615,11 @@ public class FlowTeamGUI extends javax.swing.JFrame {
     private void jButtonRemovePersonManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemovePersonManageActionPerformed
         // TODO add your handling code here:
         int selected = jListTeamMembers.getAnchorSelectionIndex();
+        int selectedTeam = jListTeamsManageTeams.getAnchorSelectionIndex();
         control.addPerson(members.get(selected));
         persons.addElement(members.getElementAt(selected));
         members.remove(selected);
+        control.removeFromTeam(selectedTeam, members.get(selected));
         jListTeamMembers.setModel(members);
         jListPersonsManageTeams.setModel(persons);
     }//GEN-LAST:event_jButtonRemovePersonManageActionPerformed

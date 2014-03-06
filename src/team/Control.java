@@ -111,6 +111,9 @@ public class Control {
     public void removePerson(int selected){
         personList.remove(selected);
     }
+    public void removeFromTeam(int selectedTeam, Person p){
+        teamList.get(selectedTeam).removePerson(p);
+    }
     public void removeTeam(int selected){
         for(int i=0;i<teamList.get(selected).getTeam().size(); i++){
             Person p;
