@@ -8,21 +8,21 @@ package team;
 
 /**
  *
- * @author Andreas Fisker
+ * @author Andreas & Michael
  */
 public class Person {
+    //Her deklerer vi lidt attributter
     private String name;
     private int administrator, analyst, creative, finisher;
     
     public Person(String name, int admin, int analyst, int creative, int finisher){
+    //Vores Person constructor
         this.name = name;
         this.administrator = admin;
         this.analyst = analyst;
         this.creative = creative;
         this.finisher = finisher;
     }
-    // Skal vi have en "fromString" constructor der kan lave en string fra en .txt fil om til en personklasse?
-    // Har lavet den idag, søndag, men har ikke testet den
     public Person(String fromTextFile){
         //  finder komma seperatorene i String inputtet og bruger dem til at lave object af personen
         int sepName = fromTextFile.indexOf(",");
@@ -36,6 +36,7 @@ public class Person {
         this.finisher = Integer.parseInt(fromTextFile.substring((sepCreative+1)));
     }
     
+//Igen lidt metoder der ikke kræver videre forklaring (kig navn)
     @Override
     public String toString(){
         String str;

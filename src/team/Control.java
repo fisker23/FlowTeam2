@@ -18,20 +18,22 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Andreas Fisker
+ * @author Andreas & Michael
  */
 public class Control {
-    
     private ArrayList<Team> teamList;
     private ArrayList<Person> personList;
     private Scanner scanFile;
-    PrintWriter pwTeam;
-    PrintWriter pwPersons;
+    private PrintWriter pwTeam;
+    private PrintWriter pwPersons;
+    
+    
     
     public Control(){
+
+        //Her oprettes arraylisterne, der kommer til at indeholde personer og teams
         teamList = new ArrayList();
         personList = new ArrayList();
-        Team teamFromFile = new Team();
         
         //Loads persons from the names.txt file
         try{
@@ -66,6 +68,7 @@ public class Control {
         
     }
     public void createTeam(String name){
+        //Det her er team constructoren.
         Team team = new Team(name, "");
         teamList.add(team);
         try{
@@ -81,6 +84,7 @@ public class Control {
         pwTeam.close();
     }
     public void saveAll(){
+        //en metode til at gemme alle personerne og teams.
         try{
             pwTeam = new PrintWriter("teams.txt");
         }
@@ -105,6 +109,7 @@ public class Control {
         
         pwPersons.close();
     }
+    //metodenavne siger hvad der sker.
     public void addPerson(Person p){
         personList.add(p);
     }

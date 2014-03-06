@@ -10,33 +10,21 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Andreas Fisker
+ * @author Andreas & Michael
  */
 public class Team {
     private String name, description;
     private ArrayList<Person> team = new ArrayList(); 
-    //Det skal nok bare være et array i stedet for 4 persons, det kan vi ændre når vi ser på det
     
     public Team(){}
     
     public Team(String name, String description){
-        //  Sådan som vores lo-fi virker lige skal man kun bruge team-navn og beskrivelse når man opretter teamet, personer bliver smidt ind senere
+        //Vores første team constructor, bruges af create team knappen
         this.name = name;
         this.description = description;
     }
     public Team(String fromFile){
-        /*
-        int sepName = fromTextFile.indexOf(",");
-        int sepAdmin = fromTextFile.indexOf(",", (sepName+1));
-        int sepAnalyst = fromTextFile.indexOf(",",(sepAdmin+1));
-        int sepCreative = fromTextFile.indexOf(",", (sepAnalyst+1));
-        this.name = fromTextFile.substring(0, sepName);
-        this.administrator = Integer.parseInt(fromTextFile.substring((sepName+1), sepAdmin));
-        this.analyst = Integer.parseInt(fromTextFile.substring((sepAdmin+1), sepAnalyst));
-        this.creative = Integer.parseInt(fromTextFile.substring((sepAnalyst+1),sepCreative));
-        this.finisher = Integer.parseInt(fromTextFile.substring((sepCreative+1)));
-        */
-        
+        //Vores team anden team constructor, der læser fra filen og opretter teams
         int sepSemicolonOne = fromFile.indexOf(";");
         int sepSemicolonTwo;
         name = fromFile.substring(0,sepSemicolonOne);
