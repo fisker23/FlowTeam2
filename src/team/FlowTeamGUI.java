@@ -98,10 +98,10 @@ public class FlowTeamGUI extends javax.swing.JFrame {
         jScrollPane6 = new javax.swing.JScrollPane();
         jListTeamMembers = new javax.swing.JList();
         jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
+        jLabelAdmin = new javax.swing.JLabel();
+        jLabelAnalyst = new javax.swing.JLabel();
+        jLabelCreative = new javax.swing.JLabel();
+        jLabelFinisher = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
         jTextAreaTeamInfo = new javax.swing.JTextArea();
@@ -375,13 +375,13 @@ public class FlowTeamGUI extends javax.swing.JFrame {
 
         jLabel14.setText("Total:");
 
-        jLabel15.setText("30");
+        jLabelAdmin.setText("30");
 
-        jLabel16.setText("30");
+        jLabelAnalyst.setText("30");
 
-        jLabel17.setText("30");
+        jLabelCreative.setText("30");
 
-        jLabel18.setText("30");
+        jLabelFinisher.setText("30");
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel19.setText("Team Info");
@@ -446,13 +446,13 @@ public class FlowTeamGUI extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel14)
                         .addGap(42, 42, 42)
-                        .addComponent(jLabel15)
+                        .addComponent(jLabelAdmin)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel16)
+                        .addComponent(jLabelAnalyst)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel17)
+                        .addComponent(jLabelCreative)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel18))
+                        .addComponent(jLabelFinisher))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addComponent(jButtonDeleteTeam))
@@ -494,10 +494,10 @@ public class FlowTeamGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel14)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel17)
-                            .addComponent(jLabel18))
+                            .addComponent(jLabelAdmin)
+                            .addComponent(jLabelAnalyst)
+                            .addComponent(jLabelCreative)
+                            .addComponent(jLabelFinisher))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -572,7 +572,8 @@ public class FlowTeamGUI extends javax.swing.JFrame {
     private void jButtonShowTeamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonShowTeamActionPerformed
         // TODO add your handling code here:
         int selected = jListTeams.getAnchorSelectionIndex();
-        String str = "Members:\n"+control.getTeam(selected);
+        String str = control.getTeam(selected).toFullString()+"";
+        jTextAreaShowTeamArea.setText(str);
     }//GEN-LAST:event_jButtonShowTeamActionPerformed
 
     private void jButtonCreateTeamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCreateTeamActionPerformed
@@ -696,10 +697,6 @@ public class FlowTeamGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -709,6 +706,10 @@ public class FlowTeamGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelAdmin;
+    private javax.swing.JLabel jLabelAnalyst;
+    private javax.swing.JLabel jLabelCreative;
+    private javax.swing.JLabel jLabelFinisher;
     private javax.swing.JLabel jLabelShowTeamLabel;
     private javax.swing.JList jListPersons;
     private javax.swing.JList jListPersonsManageTeams;

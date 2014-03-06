@@ -1,5 +1,3 @@
 BENT;
 TeamAwesome;Michael,100,100,100,100;Andreas,100,100,100,100;
 1234;
-;
-null;
