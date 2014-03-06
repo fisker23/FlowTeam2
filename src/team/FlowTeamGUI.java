@@ -606,6 +606,7 @@ public class FlowTeamGUI extends javax.swing.JFrame {
         persons.remove(selected);
         jListTeamMembers.setModel(members);
         jListPersonsManageTeams.setModel(persons);
+        updateScore();
     }//GEN-LAST:event_jButtonAddPersonManageActionPerformed
 
     private void jButtonShowManageTeamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonShowManageTeamsActionPerformed
@@ -617,8 +618,22 @@ public class FlowTeamGUI extends javax.swing.JFrame {
             members.add(i, p);
         }
         jListTeamMembers.setModel(members);
+        updateScore();
     }//GEN-LAST:event_jButtonShowManageTeamsActionPerformed
-
+    private void updateScore(){
+        int totalAdmin = 0, totalAnalyst = 0, totalCreative = 0, totalFinisher = 0;
+        for(int i=0;i<members.size();i++){
+            totalAdmin = totalAdmin + members.get(i).getAdministrator();
+            totalAnalyst = totalAnalyst + members.get(i).getAnalyst();
+            totalCreative = totalCreative + members.get(i).getCreative();
+            totalFinisher = totalFinisher + members.get(i).getFinisher();
+            
+        }
+        jLabelAdmin.setText(totalAdmin+"");
+        jLabelAnalyst.setText(totalAnalyst+"");
+        jLabelCreative.setText(totalCreative+"");
+        jLabelFinisher.setText(totalFinisher+"");
+    }
     private void jButtonRemovePersonManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemovePersonManageActionPerformed
         // TODO add your handling code here:
         int selected = jListTeamMembers.getAnchorSelectionIndex();
@@ -629,6 +644,7 @@ public class FlowTeamGUI extends javax.swing.JFrame {
         control.removeFromTeam(selectedTeam, members.get(selected));
         jListTeamMembers.setModel(members);
         jListPersonsManageTeams.setModel(persons);
+        updateScore();
     }//GEN-LAST:event_jButtonRemovePersonManageActionPerformed
 
     private void jButtonSaveTeamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveTeamActionPerformed
